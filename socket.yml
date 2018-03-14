@@ -1,6 +1,6 @@
 name: new-fb-comment-hook
 description: Description of new-fb-comment-hook
-version: 0.0.1
+version: 0.0.2
 runtime: nodejs_v8
 keywords:
   - fb
@@ -52,7 +52,6 @@ endpoints:
         parameters:
           details:
             description: Error details
-
         example: |
           {
             "details": ""
@@ -96,7 +95,6 @@ endpoints:
         parameters:
           details:
             description: Error details
-
         example: |
           {
             "details": ""
