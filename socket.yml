@@ -85,20 +85,22 @@ endpoints:
         parameters:
           message:
             description: Status messge
-        example: |
-          {
-            "message": "ok"
-          }
+        examples:
+          - | 
+              {
+                "message": "ok"
+              }
       fail:
         exit_code: 400
         description: Failed
         parameters:
           details:
             description: Error details
-        example: |
-          {
-            "details": ""
-          }
+        examples: 
+          - |
+              {
+                "details": ""
+              }
 events:
   fb_comment_recieved:
     description: Emitted when new comment apears.
