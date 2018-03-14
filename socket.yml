@@ -1,0 +1,103 @@
+name: new-fb-comment-hook
+description: Description of new-fb-comment-hook
+version: 0.0.1
+runtime: nodejs_v8
+keywords:
+  - fb
+  - facebook
+  - comment
+config:
+  VERIFY_TOKEN:
+    type: string
+    description: Token used in facebook verification challenge
+    required: true
+endpoints:
+  new-webhook:
+    private: true
+    description: Create facebook webhook for page
+    inputs:
+      GET:
+        type: object
+        properties:
+          app_id:
+            type: string
+            description: Your app id
+          app_secret:
+            type: string
+            description: Your app secret
+          access_token:
+            type: string
+            description: Access token
+        required:
+          - app_id
+          - app_secret
+          - access_token
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Status messge
+        example: |
+          {
+            "message": "ok"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          details:
+            description: Error details
+
+        example: |
+          {
+            "details": ""
+          }
+  webhook:
+    description: Webhook endpoint called by facebook
+    inputs:
+      GET:
+        type: object
+        properties:
+          app_id:
+            type: string
+            description: Your app id
+          hub:
+            type: object
+            properties:
+              mode:
+                type: string
+              challenge:
+                type: string
+              verify_token:
+                type: string
+        required:
+          - app_id
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Status messge
+        example: |
+          {
+            "message": "ok"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          details:
+            description: Error details
+
+        example: |
+          {
+            "details": ""
+          }
+events:
+  fb_comment_recieved:
+    description: Emitted when new comment apears.
+    parameters:
+      payload:
+        type: object
+        description: Facebook comment webhook payload.
