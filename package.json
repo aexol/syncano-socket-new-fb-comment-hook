@@ -3,7 +3,8 @@
   "scripts": {
     "build": "npm run build:src && npm run build:env",
     "build:src": "sh ./bin/compile",
-    "build:env": "sh ./bin/compile-env"
+    "build:env": "sh ./bin/compile-env",
+    "docs": "socket2md > README.md; echo"
   },
   "dependencies": {
     "@aexol/syncano-middleware": "^0.1.7",
