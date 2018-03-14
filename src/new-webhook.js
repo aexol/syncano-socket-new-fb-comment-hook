@@ -6,7 +6,7 @@ function run(ctx, syncano) {
   const {instanceName, spaceHost} = syncano.instance.instance;
   const callbackUrl = `https://${instanceName}.${spaceHost}/${
     ctx.meta.socket
-  }/webhook/?app_id=${ctx.args.app_id}`;
+  }/webhook/?app_id=${ctx.args.app_id}&secret=${ctx.config.SECRET}`;
   const app = FB.extend({
     appId: ctx.args.app_id,
     appSecret: ctx.args.app_secret

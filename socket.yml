@@ -11,6 +11,10 @@ config:
     type: string
     description: Token used in facebook verification challenge
     required: true
+  SECRET:
+    type: string
+    description: Webhook secret. All webhook calls without it will be denied.
+    required: true
 endpoints:
   new-webhook:
     private: true
@@ -62,6 +66,9 @@ endpoints:
           app_id:
             type: string
             description: Your app id
+          secret:
+            type: string
+            description: Secret from config.
           hub:
             type: object
             properties:
